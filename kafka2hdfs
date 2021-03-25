@@ -1,0 +1,21 @@
+version: '3'
+services:
+  kafka2hdfs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: kafka2hdfs:latest
+    container_name: kafka2hdfs
+    restart: always
+    tty: true
+    extra_hosts:
+      - "<domain-name>:<IP>"
+      - "<domain-name>:<IP>"
+    working_dir: /app
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
